@@ -1,0 +1,41 @@
+site_name: My Docs
+
+
+nav:
+  - Hme : index.md
+  - Multi Machine : MultiMachine.md
+  - Setup : Setup.md
+  - Simultation : Sim.md
+  - Navigation : Nav.md
+  - Behavior Tree : Bt.md
+  
+
+theme:
+  name: material
+  features:
+    - content.code.annotate 
+
+
+
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+
+
+ 
+ 
