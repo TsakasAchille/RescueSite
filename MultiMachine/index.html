@@ -238,6 +238,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#commande" class="md-nav__link">
+    Commande:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    Exemple:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#avantage" class="md-nav__link">
     Avantage
   </a>
@@ -267,6 +281,47 @@
           <li class="md-nav__item">
   <a href="#exemple-de-code" class="md-nav__link">
     Exemple de code :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avantage_1" class="md-nav__link">
+    Avantage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inconveniants_1" class="md-nav__link">
+    Inconveniants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-utilisation-de-ros-bridge" class="md-nav__link">
+    3. Utilisation de ROS Bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Utilisation de ROS Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine-1" class="md-nav__link">
+    Au niveau de la machine 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine-2" class="md-nav__link">
+    Au niveau de la machine 2
   </a>
   
 </li>
@@ -379,6 +434,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#commande" class="md-nav__link">
+    Commande:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    Exemple:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#avantage" class="md-nav__link">
     Avantage
   </a>
@@ -412,6 +481,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#avantage_1" class="md-nav__link">
+    Avantage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inconveniants_1" class="md-nav__link">
+    Inconveniants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-utilisation-de-ros-bridge" class="md-nav__link">
+    3. Utilisation de ROS Bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Utilisation de ROS Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine-1" class="md-nav__link">
+    Au niveau de la machine 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine-2" class="md-nav__link">
+    Au niveau de la machine 2
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -433,18 +543,15 @@
 
 
 <h1 id="communication-multimachine">Communication Multimachine</h1>
-<p>dd
-En robotique il est souvent necessaire d'avoir plusieur machines qui communiquent entre elles. Dans notre cas nous avons un robot mobile qui doit communiquer avec une console deporté</p>
-<p>Il exsite plusieur façon de communiquer entre machine avec ROS</p>
-<p>Nous allons decrire quelque une de ces methodes en presentant leur avantages et inconveniants</p>
-<p>Dans toutes ces méthodes les machines partage le même reseau.</p>
+<p>En robotique il est souvent nécessaire d'avoir plusieurs machines qui communiquent entre elles. Dans notre cas nous avons un robot mobile qui doit communiquer avec une console déportée</p>
+<p>Il existe plusieurs façons de communiquer entre machines avec ROS</p>
+<p>Nous allons décrire quelqu'une de ces méthodes en présentant leurs avantages et inconvénients</p>
+<p>Dans toutes ces méthodes des machines partage le même réseau.</p>
 <h2 id="1-utilisation-dune-machine-maitre">1. Utilisation d'une machine "maître"</h2>
-<p>La méthode la plus simple et d'utiliser le master d'une machine et d'exporter ce master au niveau des autres machines</p>
-<figure markdown>
-  ![Image title](images/RosMasterUnique.png){ width="300" }
-  <figcaption>Image caption</figcaption>
-</figure>
-
+<p>La méthode la plus simple et d'utiliser un master unique partagé par plusieurs machines.</p>
+<p><img alt="Image title" src="../images/RosMasterUnique.png" /></p>
+<p>Nous avons une machine "maître" qui partage son master avec des machines "escalves".</p>
+<h4 id="commande">Commande:</h4>
 <p>Au niveau de la machine maître, dans un terminal:</p>
 <div class="highlight"><pre><span></span><code>export ROS_HOSTNAME={IP MAITRE}
 export ROS_MASTER_URI=http://{IP MAITRE}:11311
@@ -453,10 +560,11 @@ export ROS_MASTER_URI=http://{IP MAITRE}:11311
 <div class="highlight"><pre><span></span><code>export ROS_HOSTNAME={IP ESCLAVE}
 export ROS_MASTER_URI=http://{IP MAITRE}:11311
 </code></pre></div>
+<h4 id="exemple">Exemple:</h4>
 <p>Prenons un exemple, nous avons deux machine, un robot et une console, d'adresse IP respective suivante :
 192.168.1.1 et 192.168.1.2 </p>
 <p><img alt="Image title" src="../images/RosMasterUnique2.png" /></p>
-<p>Ici le master sera celui de la console.</p>
+<p>Ici, on utilise le master de la console.</p>
 <p>Au niveau de la console, dans un terminal:</p>
 <div class="highlight"><pre><span></span><code>export ROS_HOSTNAME=192.168.1.1
 export ROS_MASTER_URI=http://192.168.1.1:11311
@@ -465,11 +573,11 @@ export ROS_MASTER_URI=http://192.168.1.1:11311
 <div class="highlight"><pre><span></span><code>export ROS_HOSTNAME=192.168.1.2
 export ROS_MASTER_URI=http://192.168.1.1:11311
 </code></pre></div>
-<p>Ici dans la deuxième commande on exporte le master de la console. Ainsi notre robot utilisera le master de notre console.</p>
+<p>Ainsi les deux machines partage le même master et peuvent donc echanger des topics.</p>
 <h3 id="avantage">Avantage</h3>
 <p>Cette méthode et simple et rapide à mettre en place.</p>
 <h3 id="inconveniants">Inconveniants</h3>
-<p>Le problème est l'ulisation d'un master unique. En effet si une machine "esclave" pert la connection avec la machine "maître" alors elle ne peut plus utiliser les nodes ROS. Dans notre cas si le robot s'eloigne de notre console est se deconnecte alors il ne pourra plus utiliser ROS.</p>
+<p>Le problème est l'ulisation d'un master unique. En effet si une machine "esclave" pert la connection avec la machine "maître" alors elle pert le master et ne peut donc plus utiliser les nodes ROS. Dans notre cas si le robot s'eloigne de notre console est se deconnecte alors il ne pourra plus utiliser ROS.</p>
 <h2 id="2-utilisation-de-la-classe-c-rosmaster">2. Utilisation de la classe c++ ros::master</h2>
 <p>Cette méthode plus compliqué mais elle permet d'utiliser plusieurs master.
 Pour cela une machine se connecte au master d'une machine "cible" souscrit a un topic et publie une copie de ce même topic dans son environement local (master local)</p>
@@ -547,7 +655,31 @@ Pour cela une machine se connecte au master d'une machine "cible" souscrit a un 
 <a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Voir code complet -&gt; [lien git hub]</p>
-<h1 id="3-utilisation-de-ros-bridge">3. Utilisation de ROS Bridge</h1>
+<h3 id="avantage_1">Avantage</h3>
+<p>Cette méthode permet d'avoir plus de contrôles sur la connexion entre machines, elle rend la communication plus flexible.
+Chaque machine garde son propre master et peut donc être indépendante de la connexion réseau.</p>
+<h3 id="inconveniants_1">Inconveniants</h3>
+<p>La méthode est plus complexe et est unidirectionnelle, en effet dans l'exemple présenté précédemment, il s'agit d'une lecture et recopie mais pas d'un réel échange de topic.</p>
+<p>Si plusieurs topics doivent être échangés, il devient fastidieux de réaliser une recopie pour chaque topic.</p>
+<h2 id="3-utilisation-de-ros-bridge">3. Utilisation de ROS Bridge</h2>
+<p>Dans l'exemple suivant nous allons utilisé ROS2. L'avantage de ROS2 est que la communication se fait sans Master. Nous allons utliser ROS 2 pour transferer les topic d'une machine ROS1 à une autre machine ROS1</p>
+<p><img alt="Image title" src="../images/Ros1-2Bridge.png" /></p>
+<h4 id="au-niveau-de-la-machine-1">Au niveau de la machine 1</h4>
+<div class="highlight"><pre><span></span><code>export ROS_MASTER_URI=http://192.168.1.4:11311
+export ROS_HOSTNAME=192.168.1.4
+</code></pre></div>
+<h4 id="au-niveau-de-la-machine-2">Au niveau de la machine 2</h4>
+<p>Premier terminal</p>
+<div class="highlight"><pre><span></span><code>export ROS_MASTER_URI=http://192.168.1.4:11311
+source ROS1
+source ROS2
+ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+</code></pre></div>
+<p>Deuxième terminal</p>
+<div class="highlight"><pre><span></span><code>source ROS1
+source ROS2
+ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+</code></pre></div>
 
 
 
