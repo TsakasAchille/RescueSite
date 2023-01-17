@@ -13,7 +13,7 @@
     
     
       
-        <title>Simultation - My Docs</title>
+        <title>Plugins - Robot Rescue</title>
       
     
     
@@ -76,7 +76,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="Robot Rescue" class="md-header__button md-logo" aria-label="Robot Rescue" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -89,13 +89,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            My Docs
+            Robot Rescue
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Simultation
+              Plugins
             
           </span>
         </div>
@@ -162,13 +162,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="Robot Rescue" class="md-nav__button md-logo" aria-label="Robot Rescue" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    My Docs
+    Robot Rescue
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -212,6 +212,62 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Simultation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Simultation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Simultation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../URDF/" class="md-nav__link">
+        Modèle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TF/" class="md-nav__link">
+        Transformations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -221,24 +277,16 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Simultation
+        Plugins
       </a>
       
     </li>
   
 
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../URDF/" class="md-nav__link">
-        URDF
-      </a>
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -321,12 +369,6 @@
                   
 
 
-<p>Dans turtlebot3_navigation -&gt; turtlebot3_gazebo nous avons plusieur environnements de simulation </p>
-<p><img alt="Image title" src="../images/1.png" />{ align=left }</p>
-<p>Dans launch nous avons les different fichier d'exécution des environnement de simulation</p>
-<p>Dans model nous avons les modeles 3d de robot et d'élément de l’environnement</p>
-<p>Dans worlds nous avons les different monde 3d</p>
-<p>Tous les elemeents 3D sont codée en XML dans un format URDF</p>
 <h1 id="launch-file">Launch File</h1>
 <p>Pour commencer nous allons lanver une simulation gazebo dans le monde trurtlebot word 3</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    <span class="nt">&lt;launch&gt;</span>
@@ -437,7 +479,7 @@ turtlebot3_burger.urdf.xacro</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../Setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup" rel="prev">
+        <a href="../TF/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Transformations" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -446,20 +488,20 @@ turtlebot3_burger.urdf.xacro</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Setup
+              Transformations
             </div>
           </div>
         </a>
       
       
         
-        <a href="../URDF/" class="md-footer__link md-footer__link--next" aria-label="Next: URDF" rel="next">
+        <a href="../MultiMachine/" class="md-footer__link md-footer__link--next" aria-label="Next: Multi Machine" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              URDF
+              Multi Machine
             </div>
           </div>
           <div class="md-footer__button md-icon">
