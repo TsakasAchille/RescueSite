@@ -683,15 +683,18 @@
 <p>Il existe plusieurs façons de communiquer entre machines avec ROS</p>
 <p>Nous allons décrire quelqu'une de ces méthodes en présentant leurs avantages et inconvénients</p>
 <p>Dans toutes ces méthodes des machines partage le même réseau.
-Pour que deux machines puissent communiquer correctement, il est important:</p>
+Pour que deux machines puissent communiquer correctement, il est important:
+dans <mark>/etc/hosts</mark> ajouter la ligne suivante:</p>
 <h4 id="au-niveau-de-la-machine1">Au niveau de la machine1</h4>
-<p>dans /etc/hosts ajouter la ligne suivante:</p>
-<p><IP machinne 1>     <Nom machinne 1></p>
+<div class="highlight"><pre><span></span><code>[IP machinne 1]    [Nom machinne 1]
+</code></pre></div>
 <p>exemple:</p>
 <div class="highlight"><pre><span></span><code>192.168.1.4     robot
 </code></pre></div>
 <h4 id="au-niveau-de-la-machine2">Au niveau de la machine2</h4>
-<p><IP machinne 2>     <Nom machinne 2></p>
+<div class="highlight"><pre><span></span><code>[IP machinne 2]    [Nom machinne 2]
+</code></pre></div>
+<p>exemple:</p>
 <div class="highlight"><pre><span></span><code>192.168.1.5     console
 </code></pre></div>
 <h2 id="1-utilisation-dune-machine-maitre">1. Utilisation d'une machine "maître"</h2>
