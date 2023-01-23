@@ -264,10 +264,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Gazebo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gazebo" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gazebo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../Sim/" class="md-nav__link">
+      <a href="../Plugins/" class="md-nav__link">
         Plugins
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sim/" class="md-nav__link">
+        Simulation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -319,6 +366,20 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine1" class="md-nav__link">
+    Au niveau de la machine1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine2" class="md-nav__link">
+    Au niveau de la machine2
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#1-utilisation-dune-machine-maitre" class="md-nav__link">
@@ -487,6 +548,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine1" class="md-nav__link">
+    Au niveau de la machine1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#au-niveau-de-la-machine2" class="md-nav__link">
+    Au niveau de la machine2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1-utilisation-dune-machine-maitre" class="md-nav__link">
     1. Utilisation d'une machine "maître"
   </a>
@@ -607,7 +682,18 @@
 <p>En robotique il est souvent nécessaire d'avoir plusieurs machines qui communiquent entre elles. Dans notre cas nous avons un robot mobile qui doit communiquer avec une console déportée</p>
 <p>Il existe plusieurs façons de communiquer entre machines avec ROS</p>
 <p>Nous allons décrire quelqu'une de ces méthodes en présentant leurs avantages et inconvénients</p>
-<p>Dans toutes ces méthodes des machines partage le même réseau.</p>
+<p>Dans toutes ces méthodes des machines partage le même réseau.
+Pour que deux machines puissent communiquer correctement, il est important:</p>
+<h4 id="au-niveau-de-la-machine1">Au niveau de la machine1</h4>
+<p>dans /etc/hosts ajouter la ligne suivante:</p>
+<p><IP machinne 1>     <Nom machinne 1></p>
+<p>exemple:</p>
+<div class="highlight"><pre><span></span><code>192.168.1.4     robot
+</code></pre></div>
+<h4 id="au-niveau-de-la-machine2">Au niveau de la machine2</h4>
+<p><IP machinne 2>     <Nom machinne 2></p>
+<div class="highlight"><pre><span></span><code>192.168.1.5     console
+</code></pre></div>
 <h2 id="1-utilisation-dune-machine-maitre">1. Utilisation d'une machine "maître"</h2>
 <p>La méthode la plus simple et d'utiliser un master unique partagé par plusieurs machines.</p>
 <p><img alt="Image title" src="../images/RosMasterUnique.png" /></p>
@@ -741,6 +827,26 @@ ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
 source ROS2
 ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
 </code></pre></div>
+<p>Ce script .sh permet d'automatiser la connection</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://192.168.1.4:11311
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">source</span> <span class="si">${</span><span class="nv">ROS1</span><span class="si">}</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">source</span> <span class="si">${</span><span class="nv">ROS2</span><span class="si">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>gnome-terminal --tab --command<span class="o">=</span><span class="s2">&quot;ros2 run ros1_bridge dynamic_bridge --bridge-all-topics&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://localhost:11311
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nb">source</span> <span class="si">${</span><span class="nv">ROS1</span><span class="si">}</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">source</span> <span class="si">${</span><span class="nv">ROS2</span><span class="si">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>gnome-terminal --tab --command<span class="o">=</span><span class="s2">&quot;ros2 run ros1_bridge dynamic_bridge --bridge-all-topics&quot;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nb">source</span> <span class="si">${</span><span class="nv">ROS1</span><span class="si">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nb">source</span> devel/setup.bash
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>roslaunch nodes starting_launch.launch
+</code></pre></div>
 
 
 
@@ -761,7 +867,7 @@ ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../Sim/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Plugins" rel="prev">
+        <a href="../Sim/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Simulation" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -770,7 +876,7 @@ ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
               <span class="md-footer__direction">
                 Previous
               </span>
-              Plugins
+              Simulation
             </div>
           </div>
         </a>
