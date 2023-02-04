@@ -16,8 +16,7 @@ mkdocs gh-deploy
 TsakasAchille
 
 # token :
-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
-
+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
 
 
 
