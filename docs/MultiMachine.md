@@ -1,23 +1,47 @@
 # Communication Multimachine
 
-En robotique il est souvent necessaire d'avoir plusieur machines qui communiquent entre elles. Dans notre cas nous avons un robot mobile qui doit communiquer avec une console deporté
 
-Il exsite plusieur façon de communiquer entre machine avec ROS
+En robotique il est souvent nécessaire d'avoir plusieurs machines qui communiquent entre elles. Dans notre cas nous avons un robot mobile qui doit communiquer avec une console déportée
 
-Nous allons decrire quelque une de ces methodes en presentant leur avantages et inconveniants
+Il existe plusieurs façons de communiquer entre machines avec ROS
 
-Dans toutes ces méthodes les machines partage le même reseau.
+Nous allons décrire quelqu'une de ces méthodes en présentant leurs avantages et inconvénients
+
+Dans toutes ces méthodes des machines partage le même réseau.
+Pour que deux machines puissent communiquer correctement, il est important,
+dans ==/etc/hosts==,  d'ajouter la ligne suivante:
+
+#### Au niveau de la machine1
+
+    [IP machinne 1]    [Nom machinne 1]
+
+exemple:
+
+    192.168.1.4     robot
+
+
+#### Au niveau de la machine2 
+
+    [IP machinne 2]    [Nom machinne 2]
+
+exemple:
+
+    192.168.1.5     console
+
 
 ## 1. Utilisation d'une machine "maître"
 
-La méthode la plus simple et d'utiliser le master d'une machine et d'exporter ce master au niveau des autres machines
+La méthode la plus simple et d'utiliser un master unique partagé par plusieurs machines.
 
 
-<figure markdown>
-  ![Image title](images/RosMasterUnique.png){ width="300" }
-  <figcaption>Image caption</figcaption>
-</figure>
 
+
+![Image title](images/RosMasterUnique.png)
+
+
+Nous avons une machine "maître" qui partage son master avec des machines "escalves".
+
+#### Commande:
 
 Au niveau de la machine maître, dans un terminal:
 
@@ -33,13 +57,14 @@ Au niveau de la machine esclave, dans un terminal:
     export ROS_MASTER_URI=http://{IP MAITRE}:11311
 
 
+#### Exemple:
 
 Prenons un exemple, nous avons deux machine, un robot et une console, d'adresse IP respective suivante :
 192.168.1.1 et 192.168.1.2 
 
 ![Image title](images/RosMasterUnique2.png)
 
-Ici le master sera celui de la console.
+Ici, on utilise le master de la console.
 
 Au niveau de la console, dans un terminal:
 
@@ -54,7 +79,9 @@ Au niveau du robot, dans un terminal:
     export ROS_MASTER_URI=http://192.168.1.1:11311
 
 
-Ici dans la deuxième commande on exporte le master de la console. Ainsi notre robot utilisera le master de notre console.
+Ainsi les deux machines partage le même master et peuvent donc echanger des topics.
+
+
 ### Avantage
 
 Cette méthode et simple et rapide à mettre en place.
@@ -62,7 +89,7 @@ Cette méthode et simple et rapide à mettre en place.
 
 ### Inconveniants
 
-Le problème est l'ulisation d'un master unique. En effet si une machine "esclave" pert la connection avec la machine "maître" alors elle ne peut plus utiliser les nodes ROS. Dans notre cas si le robot s'eloigne de notre console est se deconnecte alors il ne pourra plus utiliser ROS.
+Le problème est l'ulisation d'un master unique. En effet si une machine "esclave" pert la connection avec la machine "maître" alors elle pert le master et ne peut donc plus utiliser les nodes ROS. Dans notre cas si le robot s'eloigne de notre console est se deconnecte alors il ne pourra plus utiliser ROS.
 
 
 
@@ -159,9 +186,68 @@ void PublisherLocal::callback(const sensor_msgs::LaserScan msg){
 
 Voir code complet -> [lien git hub]
 
+### Avantage
 
- 
+Cette méthode permet d'avoir plus de contrôles sur la connexion entre machines, elle rend la communication plus flexible.
+Chaque machine garde son propre master et peut donc être indépendante de la connexion réseau.
 
-# 3. Utilisation de ROS Bridge
+### Inconveniants
+
+La méthode est plus complexe et est unidirectionnelle, en effet dans l'exemple présenté précédemment, il s'agit d'une lecture et recopie mais pas d'un réel échange de topic.
+
+Si plusieurs topics doivent être échangés, il devient fastidieux de réaliser une recopie pour chaque topic.
+
+## 3. Utilisation de ROS Bridge
+
+Dans l'exemple suivant nous allons utilisé ROS2. L'avantage de ROS2 est que la communication se fait sans Master. Nous allons utliser ROS 2 pour transferer les topic d'une machine ROS1 à une autre machine ROS1
+
+![Image title](images/Ros1-2Bridge.png)
+
+
+#### Au niveau de la machine 1
+
+    export ROS_MASTER_URI=http://192.168.1.4:11311
+    export ROS_HOSTNAME=192.168.1.4
+
+
+#### Au niveau de la machine 2
+
+Premier terminal
+
+    export ROS_MASTER_URI=http://192.168.1.4:11311
+    source ROS1
+    source ROS2
+    ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+
+Deuxième terminal
+
+    source ROS1
+    source ROS2
+    ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+
+
+Ce script .sh permet d'automatiser la connection
+
+
+```sh
+export ROS_MASTER_URI=http://192.168.1.4:11311
+source ${ROS1}
+source ${ROS2}
+
+gnome-terminal --tab --command="ros2 run ros1_bridge dynamic_bridge --bridge-all-topics"
+
+
+export ROS_MASTER_URI=http://localhost:11311
+
+source ${ROS1}
+source ${ROS2}
+
+gnome-terminal --tab --command="ros2 run ros1_bridge dynamic_bridge --bridge-all-topics"
+
+
+source ${ROS1}
+source devel/setup.bash
+roslaunch nodes starting_launch.launch #lancement d'un node dans ROS1 local
+```
 
 

@@ -4,8 +4,6 @@
 
 
 
-
-
 ##Séquence
 
 ![Image title](images/sequence.png)
@@ -36,7 +34,7 @@ L'objetif ici est le suivant, dans un premeier temps nous allons verifier que no
 import functools
 import py_trees
 import py_trees_ros
-import py_trees.console as console
+import py_trees.console as console+-
 import rospy
 import sys
 

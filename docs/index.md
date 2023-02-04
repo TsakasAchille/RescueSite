@@ -16,8 +16,20 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
 
-##### saluta tous
 
-    el  
-    s
-    
+
+Liste à puce:
+
+* Element 1
+  * Sous-élément 1
+  * Sous-élément 2
+* Element 2
+* Element 3
+
+
+**Texte en gras**
+
+
+<span style="background-color: lightgreen">texte mis en évidence en vert</span>
+
+

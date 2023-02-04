@@ -1,26 +1,57 @@
-site_name: My Docs
+site_name: Robot Rescue
+
 
 
 nav:
-  - Hme : index.md
-  - Multi Machine : MultiMachine.md
+  - Home : index.md
   - Setup : Setup.md
-  - Simultation : Sim.md
-  - Navigation : Nav.md
+  - Simultation : 
+    - Modèle: URDF.md
+    - Transformations: TF.md
+    - Gazebo : 
+      - Plugins: Plugins.md
+      - Simulation: Sim.md
+  - Navigation :
+    - Move_Base_Flex : Nav.md
+    - Recovery : 
+      - Recovery Plugins : Recovery.md
+      - Plugin Custum : Recovery_Plugin.md
   - Behavior Tree : Bt.md
-  
+  - Multi Machine : MultiMachine.md
 
-theme:
+
+
+theme: 
   name: material
   features:
     - content.code.annotate 
+    - content.code.copy
+
+  
+#ivory
+#'rtd-dropdown'
+#  material
+ # bootstrap
 
 
 
 
 markdown_extensions:
+  - markdown.extensions.html
+  - pymdownx.extra
   - attr_list
   - md_in_html
+  - mkdocs.extensions.codehilite:
+      css_class: codehilite
+      linenums: True
+  - mkdocs_pygments_markdown_extension
+  - tables
+
+pymdownx:
+  extra:
+    allow_html: true
+
+  
 
 
 markdown_extensions:
@@ -36,6 +67,3 @@ markdown_extensions:
   - pymdownx.tilde
 
 
-
- 
- 

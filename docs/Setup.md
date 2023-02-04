@@ -1,10 +1,9 @@
 
 
-Créations d ‘un Workspace que nous allons appeler move_base_ws
+
+Créations d‘un Workspace que nous allons appeler move_base_ws
 
 schema simplifier 
-
-
 
     mkdir moveBase_ws
     cd moveBase_ws

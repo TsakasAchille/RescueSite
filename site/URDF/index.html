@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Modèle - Robot Rescue</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-1.10.2.min.js" defer></script>
+    <script src="../js/bootstrap-3.3.7.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Robot Rescue</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Setup/" class="nav-link">Setup</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Simultation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Modèle</a>
+</li>
+                                    
+<li>
+    <a href="../TF/" class="dropdown-item">Transformations</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Gazebo</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../Plugins/" class="dropdown-item">Plugins</a>
+</li>
+            
+<li>
+    <a href="../Sim/" class="dropdown-item">Simulation</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Nav/" class="dropdown-item">Navigation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Recovery</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../Recovery_Plugin/" class="dropdown-item">Plugin Custum</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Bt/" class="nav-link">Behavior Tree</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../MultiMachine/" class="nav-link">Multi Machine</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Setup/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../TF/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#modele" class="nav-link">Modèle</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#corps" class="nav-link">Corps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#roue" class="nav-link">Roue</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#footprint" class="nav-link">Footprint</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_2" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_3" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_4" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_5" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_6" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_7" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_8" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#assemblage-complet" class="nav-link">Assemblage complet</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="modele">Modèle</h1>
+<h2 id="corps">Corps</h2>
+<p>Ci-dessous, les dimensions du corps du robot:</p>
+<p><img alt="Image title" src="../images/URDF/1.png" /></p>
+<h3 id="collision">Collision</h3>
+<p>On genere un rectangle correpondant au corps du robot:</p>
+<p>L’origine du corps se trouve au centre du rectangle, on souhaite décaler cette origine pour la placer au niveau de l’entraxe des roues, on decale donc l’axe x de 0.2 m</p>
+<p>Sur gazebo il est important de distingué deux paramètres de géométrie: Visual et colision. Une géometrie “collision” elle aura des paramètre physique et sera donc soumis au frottement, friction, gravité.. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;collision&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0.2 0 0.0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="nt">&lt;geometry&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.6 0.420 0.115&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  <span class="nt">&lt;/geometry&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">&lt;/collision&gt;</span>
+</code></pre></div>
+<h3 id="visuel">Visuel</h3>
+<p>Une géometrie “visual” elle, sera purement visuel. Nous pouvons ajouter un mesh, un fichier 3D format STL que nous avons génerer avec un logicielle de CAO.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;visual&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0.2 0 0.0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 -1.57&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nt">&lt;geometry&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="nt">&lt;mesh</span> <span class="na">filename=</span><span class="s">&quot;package://rescue_description/meshes/base_link.stl&quot;</span> <span class="na">scale=</span><span class="s">&quot;0.001 0.001 0.001&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="nt">&lt;/geometry&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;light_black&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">&lt;/visual&gt;</span>
+</code></pre></div>
+<h3 id="physique">Physique</h3>
+<p>Désormais nous devons definir l’inertie de notre pièce. Notre corps est un rectangle, pour faciliter la tâche, nous pouvons inclure une macro qui calcul la matrice d’inertie d’un rectangle en fonction de sa masse et ses dimension. On y ajoute egalement l’origine du corp.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a> <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;box_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m w h d x y z&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   <span class="nt">&lt;inertial&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="nt">&lt;origin</span>  <span class="na">xyz=</span><span class="s">&quot;${x} ${y} ${z}&quot;</span>  <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 ${pi/2}&quot;</span><span class="nt">/&gt;</span>     
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nt">&lt;inertia</span> <span class="na">ixx=</span><span class="s">&quot;${(m/12) * (h*h + d*d)}&quot;</span> <span class="na">ixy=</span><span class="s">&quot;0.0&quot;</span> <span class="na">ixz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">iyy=</span><span class="s">&quot;${(m/12) * (w*w + d*d)}&quot;</span> <span class="na">iyz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">izz=</span><span class="s">&quot;${(m/12) * (w*w + h*h)}&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>   <span class="nt">&lt;/inertial&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> <span class="nt">&lt;/xacro:macro&gt;</span>
+</code></pre></div>
+<p>Nous pouvons appeler la macro dans la definiton du corps</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;xacro:box_inertia</span> <span class="na">m=</span><span class="s">&quot;1O&quot;</span> <span class="na">w=</span><span class="s">&quot;0.420&quot;</span> <span class="na">d=</span><span class="s">&quot;0.6&quot;</span> <span class="na">h=</span><span class="s">&quot;0.115&quot;</span> <span class="na">x=</span><span class="s">&quot;0.2&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">z=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+<p><img alt="Image title" src="../images/URDF/2.png" /></p>
+<h2 id="roue">Roue</h2>
+<p>Les roues peuvent être representer comme des cylindres. voici leur dimensions:</p>
+<p><img alt="Image title" src="../images/URDF/3.png" /></p>
+<p>On créer un link que l’on appelle Roue_Droite
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;Roue_Droite&quot;</span><span class="nt">&gt;</span>
+</code></pre></div></p>
+<p>On genère un cylindre avec les bonnes dimensions
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.0375&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.050&quot;</span><span class="nt">/&gt;</span>        
+</code></pre></div></p>
+<p>On place l’origine de la pièce en son centre: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot; 0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p><img alt="Image title" src="../images/URDF/4.png" /></p>
+<p>Pour l'assembler au corps, nous devons créer le joint entre la roue droite et le corps du robot. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;Joint_Roue_Droite&quot;</span> <span class="na">type=</span><span class="s">&quot;continuous&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<p>Le joint est de type "continuous” pour indiquer une rotation autour d’un axe unique</p>
+<p>On definit les lien de parenté:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;Roue_Droite&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>on definit l’origine du joint</p>
+<p>Cette origine est la distance entre les origines du link père et mère en prenant comme origne fixe celle du père
+On Sohaite décaler la roue par rapport à l'origine du corps:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a> <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 -0.21 -0.065&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<img alt="Image title" src="../images/URDF/5.png" /></p>
+<p>On remarque que la roue n’est pas orienté correctement, il est necessaire de réaliser une rotation de 90° autour de l’axe x</p>
+<p><img alt="Image title" src="../images/URDF/6.png" /></p>
+<p>rotation de 90° = π/2 = 1.57  autour de l’axe x et decalage en y (epaisseur de la roue):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a> <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 -0.2285 -0.065&quot;</span> <span class="na">rpy=</span><span class="s">&quot;-1.57 0 0&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div></p>
+<p>Enfin , on definit l’axe de rotation de notre roue, ici, l’axe z
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a> <span class="nt">&lt;axis</span> <span class="na">xyz=</span><span class="s">&quot;0 0 1&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div></p>
+<h2 id="footprint">Footprint</h2>
+<p>Le footprint du robot definit l’empreinte du robot dans l’espace. Ce paramètre permet aux algorithme de navigation de connaitre les dimensions du robot.
+La délimitation se définit en 4 point A,B,C,D</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a> footprint: [[A], [B], [C], [D]]
+</code></pre></div>
+<p><img alt="Image title" src="../images/URDF/7.png" /></p>
+<p>Nous devons choisir des points qui permettent de couvrir l’integralité de l'espace pris par le robot
+L’origine se base par rapport au base_link definit précédemment.
+Dans l’exemple ci-dessous nous avons representé les 4 points correspondant aux angle du corps du robot</p>
+<p>Le footprint correspondant est le suivant:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>footprint: [[-0.1,-0.21], [-0.1,0.21], [0.5,0.21], [0.5,-0.21]]
+</code></pre></div></p>
+<p>Pour couvrir le robot et ajouter une zone securité nous allons utiliseé un footprint légèrement plus grand:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>footprint: [[-0.12,-0.23], [-0.12,0.23], [0.52,0.23], [0.52,-0.23]]
+</code></pre></div>
+<h1 id="_1"></h1>
+<h1 id="_2"></h1>
+<h1 id="_3"></h1>
+<h1 id="_4"></h1>
+<h1 id="_5"></h1>
+<h1 id="_6"></h1>
+<h1 id="_7"></h1>
+<h1 id="_8"></h1>
+<h1 id="assemblage-complet">Assemblage complet</h1>
+<p>De la même manière que pour les roues et le corps on ajoute a notre modele, les flipper, une roues libre, le lidar et la caméra</p>
+<p>toue les joints sont des joint fixes enfant du link corps</p>
+<h3 id="arborescence">arborescence</h3>
+<ul>
+<li>corps<ul>
+<li>roue_droite</li>
+<li>roue_gauche</li>
+<li>flipper_droit</li>
+<li>flipper_gauche</li>
+<li>roue_libre</li>
+<li>caméra</li>
+<li>lidar</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Image title" src="../images/URDF/robot2.png" /></p>
+<p>Dans le lien github suivant le modèle complet</p>
+<p><a href="https://github.com/TsakasAchille/ROS_Navigation.git">GitHub</a></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

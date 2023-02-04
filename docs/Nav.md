@@ -1,40 +1,66 @@
+
+
+
+# Move base Flex
+
+Move_base_flex est un composant ROS (Robot Operating System) utilisé pour la planification de la navigation autonome dans un environnement de robot. Il fournit une solution pour la planification de la navigation autonome en utilisant des algorithmes de planification de la trajectoire et de la gestion de la carte de coûts.
+
+![Image title](images/move_base_flex.png)
+
+
+
+MoveBaseFlex est une extension de la bibliothèque de navigation de base de ROS (Robot Operating System), qui est également appelée MoveBase. MoveBaseFlex hérite du fonctionnement de base de MoveBase, mais ajoute des fonctionnalités supplémentaires pour prendre en charge différents algorithmes de planification et de suivi de chemin pour les robots mobiles.
+
+MoveBaseFlex est conçu pour être plus flexible que MoveBase et peut être utilisé pour des scénarios de navigation plus complexes. Il permet de changer facilement les algorithmes de planification et de suivi de chemin en fonction des besoins spécifiques de l'application, sans avoir à modifier le code source.
+
+Voir -> [Documentation Move_Base_Flex]( https://uos.github.io/mbf_docs/)
+
+
+    source devel/setup.bash
+    export TURTLEBOT3_MODEL=rescue
+    roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+
+##
+    source devel/setup.bash
+    export TURTLEBOT3_MODEL=rescue
+    roslaunch mbf_advanced amcl_demo_mbf_recovery.launch 
+
+##
+
+    source devel/setup.bash
+    rosrun mbf_advanced pytreesRecovery.py 
+
+##
+
+
+    rosrun rqt_py_trees rqt_py_trees
+
+
+
 # Move base Client
 
+Le launch file suivant lance  "move_base_flex". Ce noeud appartient au package "mbf_costmap_nav" et utilise le type "mbf_costmap_nav".
+
+Le noeud charge plusieurs fichiers de paramètres ROS à l'aide de la commande "rosparam". Les fichiers de paramètres définissent les comportements du noeud "move_base_flex", tels que les paramètres de coûts pour les cartes locales et globales de l'environnement ainsi que les paramètres de planification de la base locale. Les paramètres de récupération "move_base_flex_recovery" sont également chargés pour définir les comportements de récupération.
 
 
 ``` xml
-<?xml version="1.0"?>
-
-<launch>
-  <!-- Base amcl demo -->
-  <include file="$(find mbf_advanced)/launch/amcl_demo_base.launch"/>
-
-  <!-- Move Base Flex -->
-  <include file="$(find mbf_advanced)/launch/mbf_recovery.launch"/>
-</launch>
-
-
-```
-Titre : mbf.launch
-
-
-``` xml
-<launch>
-    <!-- Arguments -->
-  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-
   <node name="move_base_flex" pkg="mbf_costmap_nav" type="mbf_costmap_nav" required="true" output="screen" clear_params="true">
-    <rosparam file="$(find turtlebot3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find turtlebot3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find turtlebot3_navigation)/param/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find turtlebot3_navigation)/param/global_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find mbf_advanced)/param/move_base_classic/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find mbf_advanced)/param/move_base_classic/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find mbf_advanced)/param/move_base_classic/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mbf_advanced)/param/move_base_classic/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find mbf_advanced)/param/move_base_flex_recovery.yaml" command="load"/>
+    <rosparam file="$(find mbf_advanced)/param/move_base_classic/base_local_planner_params.yaml" command="load" />
+
+
   </node>
-  
-  <!-- Launch box into gazebo -->
-  <include file="$(find mbf_advanced)/launch/spawn_box.launch"/>
-</launch>
+
 ```
+
+Nous incluons les different paramètre necessaire pour parametre nos plugins
 
 
 
